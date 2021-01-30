@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import store from '../store';
 
 /*Notes about this Component--
@@ -14,23 +14,24 @@ import store from '../store';
 7. Const Wrapper is used for styling as mentioned in step 1. */
 
 class Login extends Component {
-      state = {
-      islogged: false,
-      loginParams: {
-        user_id: "",
-        user_password: ""
-      },
-      newUser: false
-    };
+  state = {
+    islogged: false,
+    loginParams: {
+      user_id: "",
+      user_password: ""
+    },
+    newUser: false,
+    checkCredentials:true
+  };
 
   handleFormChange = event => {
-    let loginParamsNew = { ...this.state.loginParams };
+    let loginParamsNew = {
+      ...this.state.loginParams
+    };
     let val = event.target.value;
     console.log("event.targe.value is: ", val);
     loginParamsNew[event.target.name] = val;
-    this.setState({
-      loginParams: loginParamsNew
-    });
+    this.setState({loginParams: loginParamsNew});
   };
 
   handleLogin = event => {
@@ -38,55 +39,36 @@ class Login extends Component {
     let user_id = this.state.loginParams.user_id;
     let user_password = this.state.loginParams.user_password;
     if (user_id === "admin" && user_password === "1234") {
-       // localStorage.setItem("token", "T");
-      this.setState({
-        islogged: true
-      });
+      this.setState({islogged: true});
     }
+    else this.setState({checkCredentials: false});
     event.preventDefault();
   };
 
   registerUser = event => {
     event.preventDefault();
     console.log("register user");
-    this.setState({
-      newUser: true
-    });
+    this.setState({newUser: true});
   }
 
   render() {
-    // if (localStorage.getItem("token")) {
-    //   return <Redirect to="/Login" />;
-    // }
-    // console.log(localStorage.getItem("token"));
+    const msg = "Please enter a valid username/password"
     return (
       <Wrapper>
-        <form onSubmit={this.handleLogin}>
-          <span>Please sign in</span><br />
-              <input
-                type="text"
-                name="user_id"
-                onChange={this.handleFormChange}
-                placeholder="Enter Username"
-              />
-              <input
-                type="password"
-                name="user_password"
-                onChange={this.handleFormChange}
-                placeholder="Enter Password"
-              />
-            <input type="submit" value="Login"  />
-            <input type="submit" value="Register as New User" onClick={this.registerUser} />
-            {this.state.islogged && <Redirect to="/dashboard" />}
-            {this.state.newUser && <Redirect to="/registration" />}
-          <p>Please use user_id: "admin" && password: "1234"</p>
-        </form>
-      </Wrapper>
-    );
+      <form onSubmit={this.handleLogin}>
+        <span>Please sign in</span><br/>
+      <input type="text" name="user_id" required onChange={this.handleFormChange} placeholder="Enter Username" />
+    <input type="password" name="user_password" required onChange={this.handleFormChange} placeholder="Enter Password"/>
+        <input type="submit" value="Login"/>
+      <input type="submit" value="Register as New User" onClick={this.registerUser}/> {this.state.islogged && <Redirect to="/dashboard"/>}
+        {this.state.newUser && <Redirect to="/registration"/>}
+        {!this.state.checkCredentials && <p>{msg}</p>}
+      </form>
+    </Wrapper>);
   }
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   min-height: calc(100vh - 50px);
   background-color: #00d38a;
   padding: 20px;
@@ -104,7 +86,7 @@ const Wrapper = styled.div`
 }
 
 input[type="submit"]:hover {
-  background-color: #00d38a;
+  background-color: #0a251c;
 }
 
 p{

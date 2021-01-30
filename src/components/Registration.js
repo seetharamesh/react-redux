@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import store from '../store';
 
 /*Notes about this Component--
@@ -13,26 +13,26 @@ import store from '../store';
 6. Const Wrapper is used for styling as mentioned in step 1. */
 
 class Registration extends Component {
-      state = {
-       registerParams: {
-        first_name:"",
-        last_name:"",
-        user_name: "",
-        user_password: "",
-        email_id:"",
-      },
-      isSuccessful: false
-    };
+  state = {
+    registerParams: {
+      first_name: "",
+      last_name: "",
+      user_name: "",
+      user_password: "",
+      email_id: ""
+    },
+    isSuccessful: false
+  };
 
   handleFormChange = event => {
-    let registerParamsNew = { ...this.state.registerParams };
+    let registerParamsNew = {
+      ...this.state.registerParams
+    };
     console.log("register new params", registerParamsNew);
     let val = event.target.value;
     console.log("event.targe.value is in registration page: ", val);
     registerParamsNew[event.target.name] = val;
-    this.setState({
-      registerParams: registerParamsNew
-    });
+    this.setState({registerParams: registerParamsNew});
   };
 
   handleSubmit = event => {
@@ -40,60 +40,32 @@ class Registration extends Component {
     let user_name = this.state.registerParams.user_name;
     let user_password = this.state.registerParams.user_password;
     if (user_name === "admin" && user_password === "1234") {
-      this.setState({
-        isSuccessful: true
-      });
+      this.setState({isSuccessful: true});
     }
     event.preventDefault();
   };
 
   render() {
-    return (
-      <Wrapper>
-        <form onSubmit={this.handleSubmit}>
-          <span>Welcome to Registration Page!</span><br />
-              <input
-                type="text"
-                name="first_name"
-                onChange={this.handleFormChange}
-                placeholder="Enter Firstname"
-              />
-              <input
-                type="text"
-                name="last_name"
-                onChange={this.handleFormChange}
-                placeholder="Enter Lastname"
-              />
-              <input
-                type="text"
-                name="email_id"
-                onChange={this.handleFormChange}
-                placeholder="Enter Email id"
-              />
-              <input
-                type="text"
-                name="user_name"
-                onChange={this.handleFormChange}
-                placeholder="Enter User Name"
-              />
-              <input
-                type="password"
-                name="user_password"
-                onChange={this.handleFormChange}
-                placeholder="Enter Password"
-              />
+    return (<Wrapper>
+      <form onSubmit={this.handleSubmit}>
+        <span>Welcome to Registration Page!</span><br/>
+        <input type="text" name="first_name" required="required" onChange={this.handleFormChange} placeholder="First name"/>
+        <input type="text" name="last_name" required="required" onChange={this.handleFormChange} placeholder="Last name"/>
+        <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
+        <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
+        <input type="password" name="user_password" required="required" onChange={this.handleFormChange} placeholder="Enter Password"/>
 
-            <input type="submit" value="Login" />
-
-            {this.state.isSuccessful && <Redirect to="/dashboard" />}
-          <p>Please use User Name: "admin" && Password: "1234" during registration as SERVER IS DOWN!! :(( </p>
-        </form>
-      </Wrapper>
-    );
+        <input type="submit" value="Register"/> {this.state.isSuccessful && <Redirect to="/login"/>}
+        <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((
+        </p>
+        <p>You will be redirected to Log In page
+        </p>
+      </form>
+    </Wrapper>);
   }
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   min-height: calc(100vh - 50px);
   background-color: #079eb3;
   padding: 20px;
@@ -104,14 +76,14 @@ const Wrapper = styled.div`
   }
 
   input[type="submit"] {
-  background-color:rgba(18, 109, 215, 0.27) ;
+  background-color:rgba(2, 19, 40, 0.78) ;
   color: white;
   cursor: pointer;
   width:52%;
 }
 
 input[type="submit"]:hover {
-  background-color: #079eb3;
+  background-color: #07464f;
 }
 
 p{
