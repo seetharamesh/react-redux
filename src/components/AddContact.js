@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Redirect} from "react-router-dom";
-import store from '../store';
+import store from '../../src/store'
 
 /*Notes about this Component--
 1. The new packages that were used are styled-components (for styling) and "Redirect" from react-router-dom library.
@@ -14,7 +14,7 @@ import store from '../store';
 
 class AddContact extends Component {
   state = {
-    registerContact: {
+      registerContact: {
       first_name: "",
       last_name: "",
       phone_number: "",
@@ -23,9 +23,8 @@ class AddContact extends Component {
   };
 
   handleFormChange = event => {
-    let registerNewContact = {
-      ...this.state.registerContact
-    };
+    let registerNewContact = {...this.state.registerContact};
+    console.log("number of data we currently have ", this.state.registerContact.length);
     console.log("Add new contact", registerNewContact);
     let val = event.target.value;
     console.log("event.targe.value is in add contact page: ", val);
@@ -37,6 +36,20 @@ class AddContact extends Component {
 
   handleSubmit = event => {
     console.log("Adding contact");
+  //  var len = this.state.registerContact.length;
+    var len = store.getState().length;
+    console.log("length of state original array is", len);
+    //since i don't have an id for new user entered in UI i am using the length of the array and incrementing it for id.
+    //This id will be used as a key when displaying in UI
+    store.dispatch({
+    type: "Add_Contact",
+    payload:{
+    Name:this.state.registerContact.first_name,
+    Avatar:this.state.registerContact.avatar,
+    Email: this.state.registerContact.email_id,
+    Id:++len
+  }
+})
     this.setState({
       isSuccessful: true
     });
@@ -44,54 +57,37 @@ class AddContact extends Component {
   };
 
   render() {
-    return ( <
-      Wrapper >
-      <
-      form onSubmit = {
-        this.handleSubmit
-      } >
-      <
-      span > Add Your Contact Page! < /span><br / >
-      <
-      input type = "text"
-      name = "first_name"
-      onChange = {
-        this.handleFormChange
-      }
-      placeholder = "First name" /
-      >
-      <
-      input type = "text"
-      name = "last_name"
-      onChange = {
-        this.handleFormChange
-      }
-      placeholder = "Last name" /
-      >
-      <
-      input type = "text"
-      name = "email_id"
-      onChange = {
-        this.handleFormChange
-      }
-      placeholder = "Email Address" /
-      >
-      <
-      input type = "text"
-      name = "avatar"
-      onChange = {
-        this.handleFormChange
-      }
-      placeholder = "Insert Image Address" /
-      >
+    return ( <Wrapper >
+      <form onSubmit = {this.handleSubmit} >
+      <span > Add Your Contact Page! < /span><br / >
+      <input type = "text"
+             name = "first_name"
+             pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+             title="Only Characters"
+             onChange = {this.handleFormChange}
+             placeholder = "First name" required />
+      <input type = "text"
+             name = "last_name"
+             pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+             title="Only Characters"
+             onChange = {this.handleFormChange}
+             placeholder = "Last name" required />
+      <input type = "text"
+             name = "email_id"
+             pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+             title="Only valid email address"
+             onChange = {this.handleFormChange}
+             placeholder = "Email Address" required />
+      <input type = "text"
+             name = "avatar"
+             onChange = {this.handleFormChange}
+             placeholder = ".jpg url (optional)" />
 
-      <
-      input type = "submit"
-      value = "Add Contact" / > {
-        this.state.isSuccessful && < Redirect to = "/dashboard" / >
-      } <
-      /form> <
-      /Wrapper>
+      <input type = "submit"
+             value = "Add Contact" / >
+      {this.state.isSuccessful && < Redirect to = "/dashboard" / >}
+      < /form>
+      < /Wrapper>
     );
   }
 }
@@ -113,11 +109,13 @@ const Wrapper = styled.div `
   width:52%;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover
+{
   background-color: rgb(94, 56, 10);
 }
 
-p{
+p
+{
   color: white;
   font-size: 20px;
 }

@@ -17,7 +17,7 @@ function Header() {
 
   const pathName = useLocation().pathname;
   console.log('pathname in header is: ', pathName);
-  if (pathName === "/about")
+  if (pathName === "/about" || pathName === "/")
     isAbout = true;
   if (pathName === "/login" || pathName === "/Login")
     isLogin = true;

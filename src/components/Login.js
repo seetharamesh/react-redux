@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Redirect} from "react-router-dom";
-import store from '../store';
 
 /*Notes about this Component--
 1. The new packages that were used are styled-components (for styling) and "Redirect" from react-router-dom library.

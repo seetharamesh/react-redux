@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import Login from './Login';
 import {Redirect} from "react-router-dom";
+import store from '../../src/store'
+
 
 /* 1. This component is mainly used to connect to API and display results
    2. Again this component uses styled-components for styling (see const Wrapper below)
@@ -15,26 +16,23 @@ import {Redirect} from "react-router-dom";
 
 export default function Dashboard() {
   const [signOutStatus, setSignOutStatus] = useState(false);
-  const [users, setUsers] = useState([]);
-  const f = async () => {
-    //await fetch starts an http request to the url specified.
-    //Because the await keyword is present, the asynchronous function is paused until the request completes.
-    //When the request completes, response is assigned with the response object of the request.
-    //More info: https://dmitripavlutin.com/javascript-fetch-async-await/
-    const response = await fetch("https://reqres.in/api/users/");
-    const json = await response.json();
-    setUsers(json.data);
-  };
+
   /*useEffect is a function which takes two arguments. The first argument passed to it is a function called effect
    and the second argument is an array of dependencies. React compares the current value of dependency and the value
    on previous render. If they are not the same, effect is invoked.
    In general the second argument is optional. If we omit it, effect will be executed after every render.
    If you want effect to be executed only on first render, you can pass an empty array and it's done as below.*/
-  useEffect(() => {
-    f();
-  }, []);
+   useEffect(() => {
+     const unsubscribe = store.subscribe(() => {
+     console.log("state inside dashboad");
+   });
+   return unsubscribe;
+ },[]);
+  const len = store.getState().length;
+  console.log("store length in dashboard ",len);
 
-  return (<Wrapper>
+  return (
+    <Wrapper>
     <span>Welcome admin</span><br/>
     <button className="signoutButton" value={signOutStatus} onClick={() => setSignOutStatus(!signOutStatus)}>Sign Out
     </button>
@@ -44,13 +42,14 @@ export default function Dashboard() {
       <h1>Contacts Directory</h1>
       <div className="flex">
         {
-          users.length && users.map((user) => {
-            return (<div key={user.id}>
+          store.getState().length && store.getState().map((user) => {
+            return (
+              <div key={user.Id}>
               <p>
-                <strong>{user.first_name}</strong>
+                <strong>{user.Name}</strong>
               </p>
-              <p>{user.email}</p>
-              <img key={user.avatar} src={user.avatar}/>
+              <p>{user.Email}</p>
+            <img src={user.Avatar} alt='not found' width="128" height="128"/>
             </div>);
           })
         }

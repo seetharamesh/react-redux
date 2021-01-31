@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Redirect} from "react-router-dom";
-import store from '../store';
 
 /*Notes about this Component--
 1. The new packages that were used are styled-components (for styling) and "Redirect" from react-router-dom library.
@@ -49,8 +48,8 @@ class Registration extends Component {
     return (<Wrapper>
       <form onSubmit={this.handleSubmit}>
         <span>Welcome to Registration Page!</span><br/>
-        <input type="text" name="first_name" required="required" onChange={this.handleFormChange} placeholder="First name"/>
-        <input type="text" name="last_name" required="required" onChange={this.handleFormChange} placeholder="Last name"/>
+        <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
+        <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
         <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
         <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
         <input type="password" name="user_password" required="required" onChange={this.handleFormChange} placeholder="Enter Password"/>
