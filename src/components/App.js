@@ -38,6 +38,7 @@ const f = async () => {
 };
 
 function App() {
+  /* The useEffect function below is used to load the API data during component mounting */
   /*useEffect is a function which takes two arguments. The first argument passed to it is a function called effect
    and the second argument is an array of dependencies. React compares the current value of dependency and the value
    on previous render. If they are not the same, effect is invoked.

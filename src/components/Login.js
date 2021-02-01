@@ -69,7 +69,7 @@ class Login extends Component {
 
 const Wrapper = styled.div `
   min-height: calc(100vh - 50px);
-  background-color: #00d38a;
+  background-color: #07ac73;
   padding: 20px;
 
   span {
@@ -106,5 +106,6 @@ p{
   line-height: 20px;
   text-decoration: none;
 }
+
 `;
 export default Login;

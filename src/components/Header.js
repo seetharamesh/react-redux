@@ -118,7 +118,7 @@ const Wrapper = styled.div `
   height: 50px;
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #080505;
 
   ul {
     margin: 0;
@@ -131,8 +131,8 @@ const Wrapper = styled.div `
 
     a {
       text-decoration: none;
-      font-size: 20px;
-      color: #333;
+      font-size: 25px;
+      color: #fff;
     }
   }
   .aboutStyles{
@@ -149,7 +149,7 @@ const Wrapper = styled.div `
   }
   .dashboardStyles{
     display: inline-block;
-    margin-left: 150px;
+    margin-left: 125px;
 
   }
 `;

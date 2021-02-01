@@ -16,9 +16,7 @@ class AddContact extends Component {
   state = {
       registerContact: {
       first_name: "",
-      last_name: "",
-      phone_number: "",
-      email_id: "",
+      email_id: ""
     }
   };
 
@@ -36,9 +34,8 @@ class AddContact extends Component {
 
   handleSubmit = event => {
     console.log("Adding contact");
-  //  var len = this.state.registerContact.length;
     var len = store.getState().length;
-    console.log("length of state original array is", len);
+    console.log("length of state array from store is", len);
     //since i don't have an id for new user entered in UI i am using the length of the array and incrementing it for id.
     //This id will be used as a key when displaying in UI
     store.dispatch({
@@ -59,7 +56,7 @@ class AddContact extends Component {
   render() {
     return ( <Wrapper >
       <form onSubmit = {this.handleSubmit} >
-      <span > Add Your Contact Page! < /span><br / >
+      <span > Add Your Contact Form ! < /span><br / >
       <input type = "text"
              name = "first_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
@@ -78,10 +75,12 @@ class AddContact extends Component {
              title="Only valid email address"
              onChange = {this.handleFormChange}
              placeholder = "Email Address" required />
-      <input type = "text"
+      <input type = "url"
              name = "avatar"
+             id = "urlList"
              onChange = {this.handleFormChange}
-             placeholder = ".jpg url (optional)" />
+             pattern="https://.*"
+             placeholder = "https://example.com"  />
 
       <input type = "submit"
              value = "Add Contact" / >

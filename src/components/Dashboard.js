@@ -15,13 +15,16 @@ import store from '../../src/store'
       we already have two options either using class component or using Hooks with useEffect*/
 
 export default function Dashboard() {
+  // var avatarFlag = true;
   const [signOutStatus, setSignOutStatus] = useState(false);
 
   /*useEffect is a function which takes two arguments. The first argument passed to it is a function called effect
    and the second argument is an array of dependencies. React compares the current value of dependency and the value
    on previous render. If they are not the same, effect is invoked.
    In general the second argument is optional. If we omit it, effect will be executed after every render.
-   If you want effect to be executed only on first render, you can pass an empty array and it's done as below.*/
+   If you want effect to be executed only on first render, you can pass an empty array and it's done as below.
+   Below the subscribe method of the store will be fired when the store is changed...here in our case new data is added to the
+   store and then the page rerenders*/
    useEffect(() => {
      const unsubscribe = store.subscribe(() => {
      console.log("state inside dashboad");
@@ -33,6 +36,7 @@ export default function Dashboard() {
 
   return (
     <Wrapper>
+
     <span>Welcome admin</span><br/>
     <button className="signoutButton" value={signOutStatus} onClick={() => setSignOutStatus(!signOutStatus)}>Sign Out
     </button>
@@ -43,13 +47,14 @@ export default function Dashboard() {
       <div className="flex">
         {
           store.getState().length && store.getState().map((user) => {
+            console.log("avatar is: ", user.Avatar);
             return (
               <div key={user.Id}>
               <p>
                 <strong>{user.Name}</strong>
               </p>
               <p>{user.Email}</p>
-            <img src={user.Avatar} alt='not found' width="128" height="128"/>
+            <img onError={(ev) =>ev.target.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvg_C9E43RiVBEnHsN5LRwXHcPzMp3Ybfow&usqp=CAU' } src={user.Avatar} alt="" width="128" height="128"/>
             </div>);
           })
         }
@@ -93,7 +98,7 @@ const Wrapper = styled.div `
 
 img {
   display: inline-block;
-  max-width: 100%;
+  background-image: url('https://winaero.com/blog/wp-content/uploads/2015/05/windows-10-user-account-login-icon.png');
 }
 
 h1{
