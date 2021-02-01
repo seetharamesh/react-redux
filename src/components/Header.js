@@ -73,11 +73,6 @@ function Header() {
             </Link>
         }
         {
-          isDashboard && <Link to="/login" className="dashboardStyles">
-              <strong>Login</strong>
-            </Link>
-        }
-        {
           isDashboard && <Link to="/addcontact" className="dashboardStyles">
               <strong>Add Contact</strong>
             </Link>
@@ -149,7 +144,7 @@ const Wrapper = styled.div `
   }
   .dashboardStyles{
     display: inline-block;
-    margin-left: 125px;
+    margin-left: 185px;
 
   }
 `;

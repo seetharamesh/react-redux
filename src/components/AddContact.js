@@ -36,8 +36,9 @@ class AddContact extends Component {
     console.log("Adding contact");
     var len = store.getState().length;
     console.log("length of state array from store is", len);
-    //since i don't have an id for new user entered in UI i am using the length of the array and incrementing it for id.
-    //This id will be used as a key when displaying in UI
+    /*since i don't have an id for new user entered in UI i am using the length of the array and incrementing it for id.
+    This id will be used as a key when displaying in UI.
+    **Here we are updating the store with user input data using store.dispatch*/
     store.dispatch({
     type: "Add_Contact",
     payload:{
@@ -57,30 +58,33 @@ class AddContact extends Component {
     return ( <Wrapper >
       <form onSubmit = {this.handleSubmit} >
       <span > Add Your Contact Form ! < /span><br / >
-      <input type = "text"
+           <input type = "text"
              name = "first_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
              title="Only Characters"
              onChange = {this.handleFormChange}
              placeholder = "First name" required />
-      <input type = "text"
+           <span className="asterisk_input">  </span>
+           <input type = "text"
              name = "last_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
              title="Only Characters"
              onChange = {this.handleFormChange}
              placeholder = "Last name" required />
-      <input type = "text"
+             <span className="asterisk_input">  </span>
+           <input type = "text"
              name = "email_id"
              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
              title="Only valid email address"
              onChange = {this.handleFormChange}
              placeholder = "Email Address" required />
-      <input type = "url"
+             <span className="asterisk_input">  </span>
+           <input type = "url"
              name = "avatar"
              id = "urlList"
              onChange = {this.handleFormChange}
              pattern="https://.*"
-             placeholder = "https://example.com"  />
+             placeholder = "Add your avatar with an url - https://example.com"  />
 
       <input type = "submit"
              value = "Add Contact" / >
@@ -101,7 +105,7 @@ const Wrapper = styled.div `
     font-size: 40px;
   }
 
-  input[type="submit"] {
+  input[type="submit"]{
   background-color:rgba(106, 78, 6, 0.79) ;
   color: white;
   cursor: pointer;
@@ -111,6 +115,14 @@ const Wrapper = styled.div `
 input[type="submit"]:hover
 {
   background-color: rgb(94, 56, 10);
+}
+.asterisk_input::after {
+content:" *";
+color: #e32;
+position: absolute;
+margin: 10px 0px 0px -20px;
+font-size: xx-large;
+padding: 0 5px 0 0;
 }
 
 p
@@ -131,6 +143,7 @@ p
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
+  content:" *";
 }
 `;
 export default AddContact;

@@ -20,7 +20,8 @@ class Registration extends Component {
       user_password: "",
       email_id: ""
     },
-    isSuccessful: false
+    isSuccessful: false,
+    isCancel: false
   };
 
   handleFormChange = event => {
@@ -44,22 +45,34 @@ class Registration extends Component {
     event.preventDefault();
   };
 
+  handleClick = event =>{
+    console.log("inside handle click -- registration page");
+    this.setState({isCancel:true});
+  }
+
   render() {
     return (<Wrapper>
       <form onSubmit={this.handleSubmit}>
         <span>Welcome to Registration Form!</span><br/>
         <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
+          <span className="asterisk_input">  </span>
         <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
+          <span className="asterisk_input">  </span>
         <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
+          <span className="asterisk_input">  </span>
         <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
+          <span className="asterisk_input">  </span>
         <input type="password" name="user_password" required="required" onChange={this.handleFormChange} placeholder="Enter Password"/>
-
+          <span className="asterisk_input">  </span>
         <input type="submit" value="Register"/> {this.state.isSuccessful && <Redirect to="/login"/>}
-        <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((
-        </p>
-        <p>You will be redirected to Log In page
-        </p>
       </form>
+      <input type="submit" value="Cancel" onClick={this.handleClick}/>
+      {this.state.isCancel && <Redirect to="/login"/>}
+      <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((
+      </p>
+      <p>You will be redirected to Log In page
+      </p>
+
     </Wrapper>);
   }
 }
@@ -84,6 +97,16 @@ const Wrapper = styled.div `
 input[type="submit"]:hover {
   background-color: #07464f;
 }
+
+.asterisk_input::after {
+content:" *";
+color: #e32;
+position: absolute;
+margin: 10px 0px 0px -20px;
+font-size: xx-large;
+padding: 0 5px 0 0;
+}
+
 
 p{
   color: white;

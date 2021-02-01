@@ -6,19 +6,21 @@ import AddContact from './AddContact';
 import Dashboard from './Dashboard';
 import Error from './Error';
 import {Route, Switch} from 'react-router-dom';
-import store from '../../src/store'
+import store from '../../src/store';
+
 /*The purpose of this App component is to setup a route for each component and it's wrapped with "Switch".
   Note there's a Error component added because if the user tries to alter the url to unknown route
   this Page not found (Error component) will be loaded.
 
   Another purpose of this component is to make asynchronous call to fetch data from API and load the data in
   store for dispatch */
-
 const f = async () => {
-  //await fetch starts an http request to the url specified.
-  //Because the await keyword is present, the asynchronous function is paused until the request completes.
-  //When the request completes, response is assigned with the response object of the request.
-  //More info: https://dmitripavlutin.com/javascript-fetch-async-await/
+  /*await fetch starts an http request to the url specified.
+   Because the await keyword is present, the asynchronous function is paused until the request completes.
+   When the request completes, response is assigned with the response object of the request.
+   More info: https://dmitripavlutin.com/javascript-fetch-async-await/
+   ** Here the json data is used to update the store --- this is the initial data that the reducer will receive with store.dispatch
+  */
   const response = await fetch("https://reqres.in/api/users/");
   const json = await response.json();
   console.log("json data:");
@@ -48,7 +50,8 @@ function App() {
     f();
   }, []);
 
-  return (<main>
+  return (
+    <main>
     <Switch>
       <Route exact path="/" component={About}/>
       <Route path="/About" component={About}/>
@@ -58,6 +61,6 @@ function App() {
       <Route path="/Dashboard" component={Dashboard}/>
       <Route component={Error}/>
     </Switch>
-  </main>)
-}
+  </main>
+)}
 export default App;

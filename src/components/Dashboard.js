@@ -23,16 +23,16 @@ export default function Dashboard() {
    on previous render. If they are not the same, effect is invoked.
    In general the second argument is optional. If we omit it, effect will be executed after every render.
    If you want effect to be executed only on first render, you can pass an empty array and it's done as below.
-   Below the subscribe method of the store will be fired when the store is changed...here in our case new data is added to the
-   store and then the page rerenders*/
+
+   ***Below the subscribe method of the store will be fired when the store is changed...
+   here in our case new data is added to the
+   store and then the page rerenders with new data*/
    useEffect(() => {
      const unsubscribe = store.subscribe(() => {
      console.log("state inside dashboad");
    });
    return unsubscribe;
  },[]);
-  const len = store.getState().length;
-  console.log("store length in dashboard ",len);
 
   return (
     <Wrapper>
@@ -47,6 +47,7 @@ export default function Dashboard() {
       <div className="flex">
         {
           store.getState().length && store.getState().map((user) => {
+            console.log("inside dashboard map function");
             console.log("avatar is: ", user.Avatar);
             return (
               <div key={user.Id}>

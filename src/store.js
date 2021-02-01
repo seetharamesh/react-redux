@@ -10,6 +10,6 @@
 import {createStore} from 'redux';
 import reducer from './reducer';
 console.log("inside store");
-const store = createStore(reducer); //create the store and pass it to Reducer
+const store = createStore(reducer); //create the store and pass the Reducer so the store can be updated constantly
 console.log("inside store AFTER createstore(reducer) is called and store looks like this ",store);
 export default store;

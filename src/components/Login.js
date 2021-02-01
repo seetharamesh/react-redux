@@ -57,7 +57,9 @@ class Login extends Component {
       <form onSubmit={this.handleLogin}>
         <span>Please sign in</span><br/>
       <input type="text" name="user_id" required onChange={this.handleFormChange} placeholder="Enter Username" />
-    <input type="password" name="user_password" required onChange={this.handleFormChange} placeholder="Enter Password"/>
+        <span className="asterisk_input">  </span>
+      <input type="password" name="user_password" required onChange={this.handleFormChange} placeholder="Enter Password"/>
+        <span className="asterisk_input">  </span>
         <input type="submit" value="Login"/>
       <input type="submit" value="Register as New User" onClick={this.registerUser}/> {this.state.islogged && <Redirect to="/dashboard"/>}
         {this.state.newUser && <Redirect to="/registration"/>}
@@ -91,6 +93,14 @@ input[type="submit"]:hover {
 p{
   color: #0c451a;
   font-size: 20px;
+}
+.asterisk_input::after {
+content:" *";
+color: #e32;
+position: absolute;
+margin: 10px 0px 0px -20px;
+font-size: xx-large;
+padding: 0 5px 0 0;
 }
 
  input

@@ -7,7 +7,7 @@ import styled from 'styled-components'
 function Error() {
   return (
     <Wrapper>
-      <span>Oops! Page not found! Error 404 :(( </span>
+      <span>Oops! Page not found! Error 404 :(( Close your browser and start again !!</span>
     </Wrapper>
   );
 };
