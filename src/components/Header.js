@@ -85,22 +85,17 @@ function Header() {
       </li>
       <li>
         {
-          isAddContact && <Link to="/about" className="dashboardStyles">
+          isAddContact && <Link to="/about" className="addContactStyles">
               <strong>About</strong>
             </Link>
         }
         {
-          isAddContact && <Link to="/login" className="dashboardStyles">
-              <strong>Login</strong>
-            </Link>
-        }
-        {
-          isAddContact && <Link to="/addcontact" className="dashboardStyles">
+          isAddContact && <Link to="/addcontact" className="addContactStyles">
               <strong>Add Contact</strong>
             </Link>
         }
         {
-          isAddContact && <Link to="/dashboard" className="dashboardStyles">
+          isAddContact && <Link to="/dashboard" className="addContactStyles">
               <strong>Dashboard</strong>
             </Link>
         }
@@ -145,7 +140,10 @@ const Wrapper = styled.div `
   .dashboardStyles{
     display: inline-block;
     margin-left: 185px;
-
+  }
+  .addContactStyles{
+    display:inline-block;
+    margin-left: 185px;
   }
 `;
 export default Header;
