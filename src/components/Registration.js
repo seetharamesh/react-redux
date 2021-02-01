@@ -47,7 +47,7 @@ class Registration extends Component {
   render() {
     return (<Wrapper>
       <form onSubmit={this.handleSubmit}>
-        <span>Welcome to Registration Page!</span><br/>
+        <span>Welcome to Registration Form!</span><br/>
         <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
         <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
         <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>

@@ -54,7 +54,8 @@ export default function Dashboard() {
                 <strong>{user.Name}</strong>
               </p>
               <p>{user.Email}</p>
-            <img onError={(ev) =>ev.target.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvg_C9E43RiVBEnHsN5LRwXHcPzMp3Ybfow&usqp=CAU' } src={user.Avatar} alt="" width="128" height="128"/>
+            <img onError={(ev) =>ev.target.src='https://winaero.com/blog/wp-content/uploads/2015/05/windows-10-user-account-login-icon.png'}
+            src={user.Avatar} alt="" width="128" height="128"/>
             </div>);
           })
         }
