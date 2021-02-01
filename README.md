@@ -1,3 +1,17 @@
+Project Name: Be-My-Contact-App!
+Purpose: One Place To Store All Your Contacts with ease!
+Target audience: All ages who have contacts :))
+Features: About page - describes the purpose of the project
+          Registration page - Registers new users
+          Login Page - Registered user login to maintain their contacts directory
+          Add Contacts Page - Registered user can add new contacts to their directory
+          Dashboard - Registered user can view all their contacts
+          Signout - Signs out the user
+ Technology used: React, Redux
+ Deployed at Heroku: https://be-my-contact-app.herokuapp.com/
+ Wireframe can be viewed at: https://github.com/seetharamesh/react-redux/blob/master/wireframe-react-redux.jpeg
+
+------------------------------------------------------------------------------------------------------------
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

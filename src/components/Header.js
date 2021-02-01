@@ -128,10 +128,13 @@ const Wrapper = styled.div `
   .aboutStyles{
     display:inline-block;
     margin-left:800px;
+    margin-top:30px;
   }
   .loginStyles{
     display:inline-block;
     margin-left:475px;
+    margin-top:30px;
+
   }
   .registrationStyles{
     display:inline-block;

@@ -38,7 +38,7 @@ export default function Dashboard() {
     <Wrapper>
 
     <span>Welcome admin</span><br/>
-    <button className="signoutButton" value={signOutStatus} onClick={() => setSignOutStatus(!signOutStatus)}>Sign Out
+    <button className="signoutButton" value={signOutStatus} onClick={() => setSignOutStatus(!signOutStatus)}><strong>Sign Out</strong>
     </button>
     {signOutStatus && <Redirect to="/Login"/>}
 
@@ -106,6 +106,7 @@ img {
 h1{
   text-align: center;
   color:white;
+  text-shadow: black 2px 1px;
 }
 
 `;

@@ -8,7 +8,7 @@ function About() {
   return (<Wrapper>
     <p>"Be My Contact App!"</p>
     <section>
-      <h2> Hello Users, Welcome to "Be My Contact App!" -- One Place To Store All Your Contacts <br /><br />
+      <h2> <br /> Hello Users, Welcome to "Be My Contact App!" -- One Place To Store All Your Contacts <br /><br />
     How many times have you struggled keeping your contacts safely in one place ?<br /><br />
   Not anymore! Here's a very easy to use app built just for you ! <br /><br />
 <span>Are you a registered user in our site! Great! Login safely and add your contacts. <br /><br />
@@ -26,6 +26,8 @@ const Wrapper = styled.div `
     text-align: center;
     color: #fff;
     font-size: 40px;
+    text-decoration: underline overline wavy black;
+    text-underline-offset: 0.3em;
   }
   h2, h3{
     color:black;
