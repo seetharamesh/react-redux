@@ -29,8 +29,9 @@ export default function Dashboard() {
    store and then the page rerenders with new data*/
    useEffect(() => {
      const unsubscribe = store.subscribe(() => {
-     console.log("state inside dashboad");
+     console.log("inside useeffect() dashboad");
    });
+   console.log("length of store is: ", store.getState().length);
    return unsubscribe;
  },[]);
 
@@ -46,6 +47,7 @@ export default function Dashboard() {
       <h1>Contacts Directory</h1>
       <div className="flex">
         {
+
           store.getState().length && store.getState().map((user) => {
             console.log("inside dashboard map function");
             console.log("avatar is: ", user.Avatar);

@@ -32,7 +32,7 @@ function Header() {
     <ul>
       <li>
         {
-          isAbout && <Link to="/about">
+          isAbout && <Link to="/about" className="aboutStyles">
               <strong>About</strong>
             </Link>
         }
@@ -44,7 +44,7 @@ function Header() {
       </li>
       <li>
         {
-          isLogin && <Link to="/about">
+          isLogin && <Link to="/about" className="loginStyles">
               <strong>About</strong>
             </Link>
         }
@@ -127,18 +127,20 @@ const Wrapper = styled.div `
   }
   .aboutStyles{
     display:inline-block;
-    margin-left:800px;
+    margin-left:295px;
     margin-top:30px;
   }
   .loginStyles{
     display:inline-block;
-    margin-left:475px;
-    margin-top:30px;
+    margin-left:200px;
+    margin-top:20px;
 
   }
   .registrationStyles{
     display:inline-block;
     margin-left:250px;
+    margin-top:20px;
+
   }
   .dashboardStyles{
     display: inline-block;
