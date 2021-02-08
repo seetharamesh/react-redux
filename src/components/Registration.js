@@ -57,9 +57,9 @@ class Registration extends Component {
         <form onSubmit={this.handleSubmit}>
           <span>Registration Form</span><br/>
           <div className="formA">
-            <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
+            <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Aphabets" onChange={this.handleFormChange} placeholder="First name"/>
               <span className="asterisk_input">  </span>
-            <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
+            <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Alphabets" onChange={this.handleFormChange} placeholder="Last name"/>
               <span className="asterisk_input">  </span>
             <input type="text" name="email_id" required="required" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" title="Only valid email address" onChange={this.handleFormChange} placeholder="Your Email Address"/>
               <span className="asterisk_input">  </span>
