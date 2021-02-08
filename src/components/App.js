@@ -14,7 +14,7 @@ import store from '../../src/store';
 
   Another purpose of this component is to make asynchronous call to fetch data from API and load the data in
   store for dispatch */
-const f = async () => {
+  const fetchDataFunction = async () => {
   /*await fetch starts an http request to the url specified.
    Because the await keyword is present, the asynchronous function is paused until the request completes.
    When the request completes, response is assigned with the response object of the request.
@@ -26,12 +26,12 @@ const f = async () => {
   console.log("json data:");
   console.log(json);
   json.data.map(user=>  store.dispatch({
-      type: "Add_Contact",
+      type: "ADD_CONTACT",
       payload:{
-      Name:user.first_name,
-      Avatar:user.avatar,
-      Email: user.email,
-      Id:user.id
+      first_name:user.first_name,
+      avatar:user.avatar,
+      email: user.email,
+      idNum:user.id
     }
   }));
   console.log("inside async function")
@@ -47,7 +47,7 @@ function App() {
    In general the second argument is optional. If we omit it, effect will be executed after every render.
    If you want effect to be executed only on first render, you can pass an empty array and it's done as below.*/
   useEffect(() => {
-    f();
+    fetchDataFunction();
   }, []);
 
   return (

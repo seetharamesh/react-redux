@@ -7,12 +7,12 @@ import styled from 'styled-components'
 function Error() {
   return (
     <Wrapper>
-      <span>Oops! Page not found! Error 404 :(( Close your browser and start again !!</span>
+      <span>Oops! Page not found! Error 404 :(( Go Back and Try Again!!</span>
     </Wrapper>
   );
 };
 const Wrapper = styled.div`
-  min-height: calc(100vh - 50px);
+  min-height: calc(91vh - 50px);
   background-color: red;
   padding: 20px;
 

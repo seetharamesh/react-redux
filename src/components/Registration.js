@@ -9,7 +9,9 @@ import {Redirect} from "react-router-dom";
 3. handleFormChange -- this method takes the user inputs and store them in state.
 4. handleSubmit -- this method is used when the user clicks submit button.
 5. render funcion renders the form and route the page accordingly using <Redirect>
-6. Const Wrapper is used for styling as mentioned in step 1. */
+6. Const Wrapper is used for styling as mentioned in step 1.
+7. A registration form is used to accept user data and appropriate validations are done to each field values
+   that the user enters and redirect the page to Login.*/
 
 class Registration extends Component {
   state = {
@@ -52,39 +54,60 @@ class Registration extends Component {
 
   render() {
     return (<Wrapper>
-      <form onSubmit={this.handleSubmit}>
-        <span>Welcome to Registration Form!</span><br/>
-        <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
-          <span className="asterisk_input">  </span>
-        <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
-          <span className="asterisk_input">  </span>
-        <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
-          <span className="asterisk_input">  </span>
-        <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
-          <span className="asterisk_input">  </span>
-        <input type="password" name="user_password" required="required" onChange={this.handleFormChange} placeholder="Enter Password"/>
-          <span className="asterisk_input">  </span>
-        <input type="submit" value="Register"/> {this.state.isSuccessful && <Redirect to="/login"/>}
-      </form>
-      <input type="submit" value="Cancel" onClick={this.handleClick}/>
+        <form onSubmit={this.handleSubmit}>
+          <span>Registration Form</span><br/>
+          <div className="formA">
+            <input type="text" name="first_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="First name"/>
+              <span className="asterisk_input">  </span>
+            <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
+              <span className="asterisk_input">  </span>
+            <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
+              <span className="asterisk_input">  </span>
+            <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
+              <span className="asterisk_input">  </span>
+            <input type="password" name="user_password" required="required" onChange={this.handleFormChange} placeholder="Enter Password"/>
+              <span className="asterisk_input">  </span>
+            <input className="register" type="submit" value="Register"/> {this.state.isSuccessful && <Redirect to="/login"/>}
+          </div>
+        </form>
+      <input className="cancel" type="submit" value="Cancel" onClick={this.handleClick}/>
       {this.state.isCancel && <Redirect to="/login"/>}
-      <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((
-      </p>
-      <p>You will be redirected to Log In page
-      </p>
+      <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((</p>
 
     </Wrapper>);
   }
 }
 
 const Wrapper = styled.div `
-  min-height: calc(100vh - 50px);
+  min-height: calc(97vh - 50px);
   background-color: #079eb3;
-  padding: 20px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
 
   span {
     color: #fff;
     font-size: 40px;
+    position: absolute;
+    left: 33%;
+    margin-top: 20px;
+    font-family: 'Cinzel Decorative';
+  }
+
+  .formA {
+    margin-top: 50px;
   }
 
   input[type="submit"] {
@@ -101,30 +124,53 @@ input[type="submit"]:hover {
 .asterisk_input::after {
 content:" *";
 color: #e32;
-position: absolute;
-margin: 10px 0px 0px -20px;
+position: relative;
+margin: 0px 0px 0px 560px;
 font-size: xx-large;
-padding: 0 5px 0 0;
+z-index: 4;
 }
 
-
-p{
+p {
   color: white;
   font-size: 20px;
+  margin-top: 0;
+  position: absolute;
+  left: 23.5%;
+  font-family: 'Dosis';
 }
 
- input
- {
-  width: 50%;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  margin: 5px 0;
-  opacity: 0.85;
-  display: inline-block;
-  font-size: 17px;
-  line-height: 20px;
-  text-decoration: none;
+input {
+ width: 50%;
+ padding: 12px;
+ display: inline-block;
+ font-size: 17px;
+ line-height: 20px;
+ position: relative;
+ left: 23%;
+ opacity: 0.85;
+ margin: 10px;
+ margin-bottom: 5px;
+ border: 3px solid #000000;
+ -webkit-transition: 0.5s;
+ transition: 0.5s;
+ border-radius: 10px;
+ outline: none;
+ z-index: 3;
 }
+
+input:focus {
+  border: 3px solid #990c0c;
+}
+
+.register {
+  margin-top: 20px;
+  margin-bottom: -3px;
+  border-width: 0px;
+}
+
+.cancel {
+  border-width: 0px;
+}
+
 `;
 export default Registration;

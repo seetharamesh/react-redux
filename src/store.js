@@ -11,6 +11,13 @@ import {createStore} from 'redux';
 import reducer from './reducer';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
+console.log("inside store");
+
+const store = createStore(reducer,devToolsEnhancer()); //originally did this way -- create the store and pass the Reducer so the store can be updated constantly
+console.log("inside store AFTER createstore(reducer) is called and store looks like this ",store);
+
+export default store;
+
 // function saveToLocalStorage(state){
 //   try{
 //     const serializedState = JSON.stringify(state);
@@ -30,14 +37,8 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 //   return undefined;
 // }
 // }
-
 /*Note devToolsEnhancer is added for debugging purpose.
   First install npm install redux-devtools-extension and below devToolsEnhancer() in your createStore*/
- // const persistedState = loadFromLocalStorage()
-console.log("inside store");
+// const persistedState = loadFromLocalStorage()
 // const store = createStore(reducer,persistedState,devToolsEnhancer()); //create the store and pass the Reducer so the store can be updated constantly
-
- const store = createStore(reducer,devToolsEnhancer()); //create the store and pass the Reducer so the store can be updated constantly
-console.log("inside store AFTER createstore(reducer) is called and store looks like this ",store);
- // store.subscribe(() => saveToLocalStorage(store.getState()));
-export default store;
+// store.subscribe(() => saveToLocalStorage(store.getState()));

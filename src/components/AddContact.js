@@ -16,8 +16,11 @@ class AddContact extends Component {
   state = {
       registerContact: {
       first_name: "",
-      email_id: ""
-    }
+      email_id: "",
+      avatar:"",
+      idNum:0
+    },
+    isSuccessful:false
   };
 
   handleFormChange = event => {
@@ -39,13 +42,14 @@ class AddContact extends Component {
     /*since i don't have an id for new user entered in UI i am using the length of the array and incrementing it for id.
     This id will be used as a key when displaying in UI.
     **Here we are updating the store with user input data using store.dispatch*/
+
     store.dispatch({
-    type: "Add_Contact",
+    type: "ADD_CONTACT",
     payload:{
-    Name:this.state.registerContact.first_name,
-    Avatar:this.state.registerContact.avatar,
-    Email: this.state.registerContact.email_id,
-    Id:++len
+    first_name:this.state.registerContact.first_name,
+    avatar:this.state.registerContact.avatar,
+    email: this.state.registerContact.email_id,
+    idNum:++len
   }
 })
     this.setState({
@@ -57,7 +61,7 @@ class AddContact extends Component {
   render() {
     return ( <Wrapper >
       <form onSubmit = {this.handleSubmit} >
-      <span > Add Your Contact Form ! < /span><br / >
+      <span > Add Your Contact < /span><br / >
            <input type = "text"
              name = "first_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
@@ -96,54 +100,69 @@ class AddContact extends Component {
 }
 
 const Wrapper = styled.div `
-  min-height: calc(100vh - 50px);
-  background-color: rgb(203, 137, 60);
+  min-height: calc(91vh - 50px);
+  background-image: url("https://i.pinimg.com/originals/e7/f5/98/e7f5981b87f2e92d1145c5cd108b9663.gif");
+  background-repeat: no-repeat;
+  background-size: auto;
   padding: 20px;
 
   span {
     color: #fff;
     font-size: 40px;
+    position: relative;
+    left: 34%;
+    font-family: 'Cinzel Decorative';
+    color:rgb(191, 23, 23);
   }
 
-  input[type="submit"]{
-  background-color:rgba(106, 78, 6, 0.79) ;
-  color: white;
-  cursor: pointer;
-  width:52%;
-}
-
-input[type="submit"]:hover
-{
-  background-color: rgb(94, 56, 10);
-}
 .asterisk_input::after {
 content:" *";
 color: #e32;
 position: absolute;
-margin: 10px 0px 0px -20px;
+margin: 10px 0px 0px -150px;
 font-size: xx-large;
 padding: 0 5px 0 0;
 }
 
-p
-{
+  input[type="submit"] {
+  background-color:rgba(199, 24, 0, 1);
+  color: white;
+  cursor: pointer;
+  width:52%;
+  position: relative;
+  left: 24%;
+  -webkit-transition: 0.5s;
+  transition: 1s;
+  border-width: 0px;
+  margin-top: 30px;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(92, 6, 6);
+  -webkit-transition: 0.5s;
+  transition: 1s;
+}
+
+
+p {
   color: white;
   font-size: 20px;
 }
 
- input
- {
+ input {
   width: 50%;
   padding: 12px;
-  border: none;
-  border-radius: 4px;
   margin: 5px 0;
   opacity: 0.85;
   display: inline-block;
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
-  content:" *";
+  position: relative;
+  left: 24%;
+  outline: none;
+  border: 3px solid #ffffff;
+  border-radius: 14px;
 }
 `;
 export default AddContact;

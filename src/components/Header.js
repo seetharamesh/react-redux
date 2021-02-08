@@ -32,71 +32,61 @@ function Header() {
     <ul>
       <li>
         {
-          isAbout && <Link to="/about" className="aboutStyles">
-              <strong>About</strong>
+          isAbout && <Link to="/about" className="aboutStyles aboutAbout">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
         {
-          isAbout && <Link to="/login" className="aboutStyles">
-              <strong>Login</strong>
-            </Link>
-        }
-      </li>
-      <li>
-        {
-          isLogin && <Link to="/about" className="loginStyles">
-              <strong>About</strong>
-            </Link>
-        }
-        {
-          isLogin && <Link to="/login" className="loginStyles">
-              <strong>Login</strong>
+          isAbout && <Link to="/login" className="aboutStyles aboutLogin">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
       </li>
       <li>
         {
-          isRegistration && <Link to="/about">
-              <strong>About</strong>
+          isLogin && <Link to="/about" className="loginStyles loginAbout">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
         {
-          isRegistration && <Link to="/registration" className="registrationStyles">
-              <strong>Registration</strong>
-            </Link>
-        }
-      </li>
-      <li>
-        {
-          isDashboard && <Link to="/about" className="dashboardStyles">
-              <strong>About</strong>
-            </Link>
-        }
-        {
-          isDashboard && <Link to="/addcontact" className="dashboardStyles">
-              <strong>Add Contact</strong>
-            </Link>
-        }
-        {
-          isDashboard && <Link to="/dashboard" className="dashboardStyles">
-              <strong>Dashboard</strong>
+          isLogin && <Link to="/login" className="loginStyles loginLogin">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
       </li>
       <li>
         {
-          isAddContact && <Link to="/about" className="addContactStyles">
-              <strong>About</strong>
+          isRegistration && <Link to="/about" className="registrationStyles registerAbout">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
         {
-          isAddContact && <Link to="/addcontact" className="addContactStyles">
-              <strong>Add Contact</strong>
+          isRegistration && <Link to="/registration" className="registrationStyles registerRegister">
+              <strong>&nbsp;&nbsp;Registration&nbsp;&nbsp;</strong>
+            </Link>
+        }
+      </li>
+      <li>
+        {
+          isDashboard && <Link to="/addcontact" className="dashboardStyles dashboardAddContact">
+              <strong>&nbsp;&nbsp;Add&nbsp;Contact&nbsp;&nbsp;</strong>
             </Link>
         }
         {
-          isAddContact && <Link to="/dashboard" className="addContactStyles">
-              <strong>Dashboard</strong>
+          isDashboard && <Link to="/dashboard" className="dashboardStyles dashboardDashboard">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+            </Link>
+        }
+      </li>
+      <li>
+        {
+          isAddContact && <Link to="/addcontact" className="addContactStyles addContactContact">
+              <strong>&nbsp;&nbsp;Add&nbsp;Contact&nbsp;&nbsp;</strong>
+            </Link>
+        }
+        {
+          isAddContact && <Link to="/dashboard" className="addContactStyles addContactDashboard">
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard&nbsp;&nbsp;&nbsp;&nbsp;</strong>
             </Link>
         }
       </li>
@@ -125,30 +115,171 @@ const Wrapper = styled.div `
       color: #fff;
     }
   }
-  .aboutStyles{
-    display:inline-block;
-    margin-left:295px;
-    margin-top:30px;
-  }
-  .loginStyles{
-    display:inline-block;
-    margin-left:200px;
-    margin-top:20px;
 
+  .aboutStyles {
+    position: relative;
+    left: 100%;
+    font-family: 'Andika New Basic', sans-serif;
   }
-  .registrationStyles{
-    display:inline-block;
-    margin-left:250px;
-    margin-top:20px;
 
+  .aboutLogin {
+    background-color: none;
+    margin-left: 50%;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
-  .dashboardStyles{
-    display: inline-block;
-    margin-left: 185px;
+
+  .aboutLogin:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
-  .addContactStyles{
-    display:inline-block;
-    margin-left: 185px;
+
+  .aboutAbout {
+    background-color: rgb(84, 5, 5);
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
+
+  .aboutAbout:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .loginStyles {
+    position: relative;
+    left: 50%;
+    font-family: 'Andika New Basic', sans-serif;
+  }
+
+  .loginLogin {
+    background-color: rgb(84, 5, 5);
+    margin-left: 50%;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .loginLogin:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .loginAbout {
+    background-color: none;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .loginAbout:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .registrationStyles {
+    position: relative;
+    left: -10%;
+    font-family: 'Andika New Basic', sans-serif;
+  }
+
+  .registerAbout {
+    background-color: none;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .registerAbout:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .registerRegister {
+    background-color: rgb(84, 5, 5);
+    margin-left: 50%;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .registerRegister:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .dashboardStyles {
+    position: relative;
+    left: -50%;
+    font-family: 'Andika New Basic', sans-serif;
+  }
+
+  .dashboardDashboard {
+    background-color: rgb(84, 5, 5);
+    margin-left: 50%;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .dashboardDashboard:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .dashboardAddContact {
+    background-color: none;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .dashboardAddContact:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .addContactStyles {
+    position: relative;
+    left: -90%;
+    font-family: 'Andika New Basic', sans-serif;
+  }
+
+  .addContactContact {
+    background-color: rgb(84, 5, 5);
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .addContactContact:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .addContactDashboard {
+    background-color: none;
+    margin-left: 50%;
+    border-radius: 15px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .addContactDashboard:hover {
+    background-color: rgb(207, 29, 5);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
 `;
 export default Header;
