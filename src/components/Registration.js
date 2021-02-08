@@ -61,7 +61,7 @@ class Registration extends Component {
               <span className="asterisk_input">  </span>
             <input type="text" name="last_name" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="Only Characters" onChange={this.handleFormChange} placeholder="Last name"/>
               <span className="asterisk_input">  </span>
-            <input type="text" name="email_id" required="required" onChange={this.handleFormChange} placeholder="Your Email Address"/>
+            <input type="text" name="email_id" required="required" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" title="Only valid email address" onChange={this.handleFormChange} placeholder="Your Email Address"/>
               <span className="asterisk_input">  </span>
             <input type="text" name="user_name" required="required" onChange={this.handleFormChange} placeholder="Enter User Name"/>
               <span className="asterisk_input">  </span>
