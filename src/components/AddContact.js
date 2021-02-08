@@ -65,14 +65,14 @@ class AddContact extends Component {
            <input type = "text"
              name = "first_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-             title="Only Characters"
+             title="Only Alphabets"
              onChange = {this.handleFormChange}
              placeholder = "First name" required />
            <span className="asterisk_input">  </span>
            <input type = "text"
              name = "last_name"
              pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-             title="Only Characters"
+             title="Only Alphabets"
              onChange = {this.handleFormChange}
              placeholder = "Last name" required />
              <span className="asterisk_input">  </span>

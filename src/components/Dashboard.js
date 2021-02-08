@@ -72,10 +72,6 @@ export default function Dashboard() {
   </Wrapper>);
 };
 
-function chbg(color) {
-    document.getElementById('b').style.backgroundColor = color;
-}
-
 const Wrapper = styled.div `
   min-height: calc(94vh - 50px);
   background-color: #f76565;

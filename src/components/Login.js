@@ -57,7 +57,7 @@ class Login extends Component {
         <div className="form-back"></div>
       <form onSubmit={this.handleLogin}>
         <span>Please sign in</span><br/>
-      <input className="userIdBox" type="text" name="user_id" required onChange={this.handleFormChange}       placeholder="Enter Username" />
+      <input className="userIdBox" type="text" name="user_id" required onChange={this.handleFormChange} placeholder="Enter Username" />
     <span className="asterisk_input1">  </span>
 
       <input className="pwdBox" type="password" name="user_password" required onChange={this.handleFormChange} placeholder="Enter Password"/>
