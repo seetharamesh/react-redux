@@ -17,7 +17,7 @@ function About() {
   </Wrapper>);
 };
 const Wrapper = styled.div `
-  min-height: calc(89vh - 55px);
+  min-height: calc(91vh - 55px);
   background-image: url('https://cdn.wallpapersafari.com/58/31/e2DOgl.png');
   padding: 20px;
   p {
