@@ -37,10 +37,21 @@ class Login extends Component {
     console.log("handle login");
     let user_id = this.state.loginParams.user_id;
     let user_password = this.state.loginParams.user_password;
-    if (user_id === "admin" && user_password === "1234") {
+    //use localStorage to retrieve data
+    const uData = localStorage.getItem('uData');
+    const pData = localStorage.getItem('pData');
+    console.log("localstorage username is: " + uData);
+    console.log("localstorage password is: " + pData);
+
+    if (user_id === uData && user_password === pData) {
       this.setState({islogged: true});
     }
     else this.setState({checkCredentials: false});
+
+    // if (user_id === "admin" && user_password === "1234") {
+    //   this.setState({islogged: true});
+    // }
+    // else this.setState({checkCredentials: false});
     event.preventDefault();
   };
 

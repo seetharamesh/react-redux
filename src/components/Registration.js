@@ -41,9 +41,21 @@ class Registration extends Component {
     console.log("handle submit");
     let user_name = this.state.registerParams.user_name;
     let user_password = this.state.registerParams.user_password;
-    if (user_name === "admin" && user_password === "1234") {
-      this.setState({isSuccessful: true});
-    }
+    let first_name = this.state.registerParams.first_name;
+    let last_name = this.state.registerParams.last_name;
+    let email_id = this.state.registerParams.email_id;
+    //set all user input in the registration form to local storage
+    localStorage.setItem('fData', first_name);
+    localStorage.setItem('lData',last_name);
+    localStorage.setItem('eData',email_id);
+    localStorage.setItem('uData',user_name);
+    localStorage.setItem('pData',user_password);
+    this.setState({isSuccessful: true});
+
+    // if (user_name === "admin" && user_password === "1234") {
+    //   this.setState({isSuccessful: true});
+    // }
+
     event.preventDefault();
   };
 
@@ -72,7 +84,7 @@ class Registration extends Component {
         </form>
       <input className="cancel" type="submit" value="Cancel" onClick={this.handleClick}/>
       {this.state.isCancel && <Redirect to="/login"/>}
-      <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((</p>
+      {/* <p>Please use User Name: "admin" && Password: "1234" during the registration as SERVER IS DOWN!! :((</p> */}
 
     </Wrapper>);
   }
